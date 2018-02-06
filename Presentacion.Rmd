@@ -1,0 +1,27 @@
+---
+title: "Teoría de Juegos y Subastas"
+author: "Dario Trujano Ochoa"
+date: "2018"
+output: beamer_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Componentes de un juego
+
+Los juegos buscan ser una representación de las circunstancias donde se desarrollan interacciones entre varios jugadores.
+
+# Jugadores
+
+# Acciones
+
+# Funciones de Pago
+
+## Juegos Rectangulares (forma normal)
+
+## Juegos Extensivos 
+
+
+
