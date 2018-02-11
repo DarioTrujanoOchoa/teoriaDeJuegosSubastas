@@ -3,25 +3,163 @@ title: "Teoría de Juegos y Subastas"
 author: "Dario Trujano Ochoa"
 date: "2018"
 output: beamer_presentation
+slide_level: 1
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-## Componentes de un juego
+# Componentes de un juego
 
 Los juegos buscan ser una representación de las circunstancias donde se desarrollan interacciones entre varios jugadores.
 
+Quizá debería llamarse: **Teoría de la decisión en intercción**
+
+¿Qué situación podríamos modelar con teoría de Juegos?
+
+* Tráfico
+* Matrimonio
+* Juegos de mesa
+
 # Jugadores
+
+Se denotará al conjunto de jugadores como:
+$$N= \{ 1, 2, ..., n \}$$
 
 # Acciones
 
+Se denotará al conjunto de acciones del jugador $i\in N$ como: $S_i$
+, y al conjunto de posibles acciones como: $S = S_1\times ...\times S_n$
+
 # Funciones de Pago
 
-## Juegos Rectangulares (forma normal)
+Se denotará a la función de pago del jugador $i$ como: 
+$$\pi_i: S \rightarrow \mathbb{R}$$
+Esta función de pago es la característica fundamental para definir un juego sobre otro, pues encierra las propiedades fundamentales de la situación de interacción que se busca modelar.
 
-## Juegos Extensivos 
+# Axiomas de Von Neumann-Morgenstern
+
+* Completitud: 
+$A\succsim B \text{ o } B\succsim A$
+
+* Transitividad
+$\text{Si } A\succsim B \text{ y} B\succsim C \Rightarrow A\succsim C$ 
+
+* Independencia:
+$\text{Si } A\succsim B \Rightarrow \alpha(A)+(1-\alpha)C \succsim \alpha(B) + (1-\alpha)C \text{, } \forall \alpha \in [0, 1]$
+
+* Continuidad:
+$\forall A, B, C$, los conjuntos:
+$$\{ \alpha: \alpha (A) + (1-\alpha) B \succsim C \}$$
+$$\{ \alpha:  C \succsim \alpha (A) + (1-\alpha) B \}$$
+, son cerrados.
+
+Son estos axiomas se puede demostrar la existencia de una función de utilidad esperada von Neumann-Morgenstern (Teorema de la utilidad esperada).
+
+
+
+
+
+# Nota sobre notación
+
+La notación antes mencionada es estándar, pero cada autor y, sobre todo, cada problema pueden tener cierta forma de expresar los anteriores elementos de formas diferentes. Por suerte, los elementos anteriores están en todos los juegos. 
+
+Existen dos grandes formas de representar los juegos: 
+
+* Rectangulares
+* Extensivos
+
+# Juegos Rectangulares (forma normal)
+
+![Juego de la gallina](images/normal1.png)
+
+# Juegos Clásicos
+
+![Juegos clásicos](images/juegos_clasicos.png)
+
+# Problemas de Representación
+
+El tratamiento de las situaciones de interacción en la teoría de juegos se entiende con la representación de juegos matriciales 2x2 (los más sencillos). 
+Además, estos juegos proveen muchas de las intuiciones básicas de la teoría.
+Sin embargo, muchas situaciones pueden complicarse. Por ejemplo:
+
+* Gran Número de jugadores
+* Acciones dentro de un intervalo
+* Estructura condicional de las acciones
+
+# Tres jugadores
+
+![Juego 2x2x2](images/2x2x2.png)
+
+# Juegos Extensivos
+
+![Inducción hacia atrás](images/extensivo1.png)
+
+# Ejercicio
+
+El juego de un periodo de la cadena de supermercados
+de Selten. (Una amenaza increíble). La empresa M, una cadena de
+supermercados, tiene el control sobre cierto producto, lo monopoliza, pero
+existe la posibilidad de que una empresa C decida entrar a competir a dicho
+mercado. M intentará convencer a C de que no lo haga, prometiéndole a
+cambio un millón de pesos de los seis que ella obtendría sin competidor y
+amenazándola, además, con bajar los precios si, a pesar de todo, C decidiera
+entrar a la competencia. Supongamos que llegara a ocurrir esto último, es
+decir, C hizo caso omiso del peligro que corre. De cumplir M su palabra,
+ninguna de las dos empresas obtendr´ıa ganancia alguna, en cambio, si M
+no cumple su amenaza, las ganancias de cada uno serán de dos millones.
+
+(Tomado de Zapata, 2007)
+
+# Solución
+
+![Cadena de Supermercados](images/Selten1.png)
+
+# Ejemplo empírico
+
+![Ejercicio de curso. Las 22 parejas que se formaron jugaron por 25 ensayos.](images/ejercicio1.png)
+
+# Datos experimentales. ¿Qué esperearíamos?
+```{r,echo=FALSE}
+E1 <- read.csv("data/EJERCICIO1.csv")
+e1=E1[,-1] # quitamos los indicadores de ensayo
+head(e1[,1:2])
+#dim(e1) # tenemos 25 ensayos y 44/2 = 22 parejas
+soles= rowSums(e1)/length(e1[1,]) # proporción de soles en cada ensayo
+```
+
+# Comportamiento en el tiempo
+```{r, echo=FALSE}
+plot(soles,ylim=c(0,1), ylab= "Soles", xlab="Ensayos", col="blue")
+adjline <- line(1:25,soles)
+abline(adjline, col="blue")
+```
+
+
+# Comportamiento por tipo de jugador
+```{r,echo=FALSE}
+# separate groups by type
+soles2= rowSums(e1[,(1:44 %% 2 ==0)])/length(e1[,(1:44 %% 2 ==0)])
+soles1= rowSums(e1[,(1:44 %% 2 ==1)])/length(e1[,(1:44 %% 2 ==1)])
+#dim(e1[,(1:44 %% 2 ==0)])
+
+plot(soles1, ylim=c(0,1), col="blue", ylab= "Soles", xlab="ensayos")
+points(soles2, ylim=c(0,1),col= 3)
+abline(line(1:25, soles1), col="blue")
+abline(line(1:25, soles2), col=3)
+```
+
+# Extrategias finales
+```{r,echo=FALSE}
+soles1_pareja <- colMeans(e1[,(1:44 %% 2 ==0)])
+soles2_pareja <- colMeans(e1[,(1:44 %% 2 ==1)])
+
+plot(soles1_pareja,soles2_pareja,ylim=c(0,1),xlim=c(0,1), col="red")
+```
+
+
+
 
 
 

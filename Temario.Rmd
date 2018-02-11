@@ -1,0 +1,74 @@
+---
+title: 'Curso: Teoría de Juegos y Subastas para la Competencia'
+author: 
+- "Dario Trujano Ochoa"
+- "dtrujano.22@gmail.com"
+date: "Enero de 2018"
+bibliography: library.bib
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Objetivo
+
+El objetivo de este curso será dar a conocer las bases de la teoría de juegos para entender la intuición económica detrás de varias disposiciones en términos de competencia. 
+En particular se revisarán los modelos de subastas, sus supuestos y principales características.
+Se planteará al final la revisión de elementos de la legislación para entenderla desde lo revisado a lo largo del curso. 
+Se pondrá especial interés en algunos artículos de la Ley Federal de Competencia Económica.
+
+# Temario
+
+1. Teoría de Juegos
+
+    i) Componentes
+
+        - Jugadores
+        - Acciones
+        - Pagos
+    
+    ii) Equilibrio de Nash
+    
+        a. Mejores Respuestas
+        
+        b. Profecias autocumplidas
+
+    iii) Modelos
+
+        a. Dilema del Prisionero
+
+        b. Cooperación (Colusión) y su efecto en los mercados
+
+        c. Monopolio y Eficiencia del Mercado
+
+        d. Mecanismos para sostener la colusión
+
+3. Subastas
+    
+    i) Supuestos
+    
+    ii) Principio de Equivalencia de Ingresos
+
+    iii) Subasta inversa a precio descendente y segundo precio a sobre cerrado
+    
+    iv) Subasta inversa a precio ascendente y primer precio a sobre cerrado
+
+4. Reformas Estructurales
+
+    i) Ley Federal de Competencia Económica
+
+    ii) Ley de Adquisiciones, Arrendamientos y Servicios del Sector Público
+    
+
+
+    
+# Bibliograía
+
+---
+nocite: | 
+  @Buccirossi2008, @Armstrong2010, @Binmore2007a, @Holt2006, @Davis2010, @Milgrom, @Dixit2004, @Krishna2002
+...
+
+
