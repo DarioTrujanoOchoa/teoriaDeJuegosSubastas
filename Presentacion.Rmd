@@ -57,9 +57,9 @@ $$\{ \alpha:  C \succsim \alpha (A) + (1-\alpha) B \}$$
 
 Son estos axiomas se puede demostrar la existencia de una función de utilidad esperada von Neumann-Morgenstern (Teorema de la utilidad esperada).
 
+# Teorema de Utilidad Esperada
 
-
-
+# Encontrar Probabilidades
 
 # Nota sobre notación
 
@@ -157,6 +157,15 @@ soles2_pareja <- colMeans(e1[,(1:44 %% 2 ==1)])
 
 plot(soles1_pareja,soles2_pareja,ylim=c(0,1),xlim=c(0,1), col="red")
 ```
+
+
+# Transformación de Extensivos a Estratégicos
+
+# Estrategias mixtas
+
+# Definición equilibrio de Nash
+
+# Demostración de Existencia
 
 
 
